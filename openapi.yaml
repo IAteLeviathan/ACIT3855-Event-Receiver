@@ -1,0 +1,91 @@
+swagger: '2.0'
+info:
+  description: This is an API for doctor and dentist booking
+  version: 1.0.0
+  title: Medical Booking API
+
+paths:
+  /doctor:
+    post:
+      summary: books date for a doctor appoitment
+      operationId: app.doctorbooking
+      description: books date for doctor appointment
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: DoctorBooking
+        description: Books date for Doctor's appointment
+        schema:
+          $ref: '#/definitions/DoctorBooking2'
+      responses:
+        200:
+          description: item created
+        400:
+          description: invalid input, object invalid
+  /dentist:
+    post:
+      summary: Books a date for a dentist appointment
+      operationId: app.dentistbooking
+      description: books date for dentist appointment
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: DentistBooking
+        description: date for dentist appointment
+        schema:
+          $ref: '#/definitions/DentistBooking2'
+      responses:
+        200:
+          description: date added
+        400:
+          description: invalid input, object invalid
+definitions:
+  DoctorBooking2:
+    type: object
+    required:
+    - first_name
+    - last_name
+    - date
+    - reason
+    properties:
+      first_name:
+        type: string
+        example: Alex
+      last_name:
+        type: string
+        example: Cho
+      date:
+        type: string
+        format: date-time
+        example: 2020-08-29:12:00:00
+      reason:
+        type: string
+        example: I am have some back problems.
+
+  DentistBooking2:
+    type: object
+    required:
+    - first_name
+    - last_name
+    - date
+    - reason
+    properties:
+      first_name:
+        type: string
+        example: Alex
+      last_name:
+        type: string
+        example: Cho
+      date:
+        type: string
+        format: date-time
+        example: 2020-08-29:12:00:00
+      reason:
+        type: string
+        example: I want braces.
